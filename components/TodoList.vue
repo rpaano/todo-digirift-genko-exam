@@ -1,6 +1,6 @@
 <template>
-  <v-card max-width="400">
-    <v-toolbar color="purple">
+  <v-card max-width="600">
+    <v-toolbar color="gray">
 
       <v-toolbar-title>Settings</v-toolbar-title>
 

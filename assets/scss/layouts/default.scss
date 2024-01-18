@@ -1,0 +1,13 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: linear-gradient(180deg, #42b883 0, #35495e);
+}
+
+h1 {
+  color: #fff;
+}
