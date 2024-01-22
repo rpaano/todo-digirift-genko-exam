@@ -1,11 +1,12 @@
 <template>
-  <v-card min-width="600" class="d-flex px-3 pt-3 gap-">
+  <v-card min-width="600" class="d-flex px-3 pt-3">
     <v-text-field
       label="edit Task"
       v-model="editTask"
       clearable
+      class="mr-3"
     />
-    <v-btn color="blue" icon="mdi-tag-edit" @click="emit('editTask', { id: item.id, name: editTask })"></v-btn>
+    <v-btn :disabled="!editTask" color="blue" icon="mdi-tag-edit" @click="emit('editTask', { id: item.id, name: editTask })"></v-btn>
   </v-card>
 </template>
 
