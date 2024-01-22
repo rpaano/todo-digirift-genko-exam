@@ -10,8 +10,10 @@
 </template>
 
 <script lang="ts" setup>
+  import type { Task } from '~/types/index.d.ts'
+
   const { item } = defineProps<{
-    item: { id: number, name: string, done: boolean }
+    item: Task
   }>()
 
   const editTask = ref(item.name)

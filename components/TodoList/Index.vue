@@ -1,39 +1,38 @@
 <template>
   <v-card max-width="600">
-    <TodoListHeader @delete-done="deleteAllDoneTasks" @deleteAll="deleteAll" :countTasks="countTasks" :countDoneTasks="countDoneTasks" />
+    <TodoListHeader @delete-done="deleteAllDoneTasks" @deleteAll="deleteAll" :countTasks="countTasks"
+      :countDoneTasks="countDoneTasks" />
     <v-list class="py-2" max-height="500">
-      <v-list-item :value="item.name"  v-for="item in items" :key="item.id">
+      <v-list-item :value="item.name" v-for="item in items" :key="item.id">
         <div class="item-content">
           <v-checkbox-btn v-model="item.done" @change="toggleDone(item.id)"></v-checkbox-btn>
-          <v-list-item-title :class="{ 'text-decoration-line-through': item.done }" :disabled="true">{{ item.name }}</v-list-item-title>
+          <v-list-item-title :class="{ 'text-decoration-line-through': item.done }" :disabled="true">{{ item.name
+          }}</v-list-item-title>
           <div class="item-content-btn">
             <v-btn color="blue" icon="mdi-tag-edit" @click="showTaskItem(item)"></v-btn>
-            <v-btn color="red" icon="mdi-delete" @click="deleteItem(item.id)"></v-btn>  
+            <v-btn color="red" icon="mdi-delete" @click="deleteItem(item.id)"></v-btn>
           </div>
         </div>
       </v-list-item>
     </v-list>
     <v-divider class="mb-4"></v-divider>
     <div class="d-flex justify-center px-4 py-2">
-      <v-text-field
-        label="Add tasks"
-        v-model="addNewTask"
-        clearable
-      />
-      <v-btn  class="mx-2" type="submit" @click="addItem(addNewTask), addNewTask = ''" icon="mdi-plus" />
+      <v-text-field label="Add tasks" v-model="addNewTask" clearable />
+      <v-btn :disabled="!addNewTask" class="mx-2" type="submit" @click="addItem(addNewTask), addNewTask = ''"
+        icon="mdi-plus" />
     </div>
-    <v-overlay
-      v-model="showEditItem"
-      class="align-center justify-center"
-    >
-      <TodoListEditTodo :item="toEdit" @editTask="editTaskTrigger"></TodoListEditTodo>
-      
+    <v-overlay v-model="showEditItem" class="align-center justify-center">
+      <TodoListEditTodo :item="toEdit" @editTask="() => editTaskTrigger"></TodoListEditTodo>
+
     </v-overlay>
+
   </v-card>
 </template>
 
 <script setup lang="ts">
   import { useItemStore } from "~/store/items";
+  import type { Task } from '~/types/index.d.ts'
+
   const addNewTask = ref<string>('')
   const showEditItem = ref(false)
   const toEdit = ref()
@@ -47,15 +46,15 @@
   });
 
   const countDoneTasks = computed(() => {
-    return items.filter((item: { done: boolean; }) => item.done).length;
+    return items.filter((item: Task) => item.done).length;
   });
 
-  const showTaskItem = (item: any) => {
+  const showTaskItem = (item: Task) => {
     toEdit.value = item
     showEditItem.value = true
   }
 
-  const editTaskTrigger = (item:any) => {
+  const editTaskTrigger = (item: Task) => {
     showEditItem.value = false
     editTask(item)
   }
