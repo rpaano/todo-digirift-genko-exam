@@ -18,9 +18,7 @@
 
   const editTask = ref(item.name)
 
-  const emit = defineEmits<{
-    (e: 'editTask', {}): void
-  }> ()
+  const emit = defineEmits(['editTask'])
 
 </script>
 

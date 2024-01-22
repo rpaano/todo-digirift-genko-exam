@@ -58,7 +58,6 @@ export const useItemStore = defineStore('items', () => {
 		}
 		
 		const index = items.value.findIndex(item => item.id === updatedProperties.id);
-		console.log(index);
 		const item = items.value.find(item => item.id === updatedProperties.id);
 		item.name = updatedProperties.name;
 		if (index !== -1) {

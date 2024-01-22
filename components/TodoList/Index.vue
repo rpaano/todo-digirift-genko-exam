@@ -22,8 +22,7 @@
         icon="mdi-plus" />
     </div>
     <v-overlay v-model="showEditItem" class="align-center justify-center">
-      <TodoListEditTodo :item="toEdit" @editTask="() => editTaskTrigger"></TodoListEditTodo>
-
+      <TodoListEditTodo :item="toEdit" @editTask="editTaskTrigger"></TodoListEditTodo>
     </v-overlay>
 
   </v-card>
