@@ -52,6 +52,20 @@ export const useItemStore = defineStore('items', () => {
 		}
 	};
 
-	return { items, addItem, deleteItem, deleteAll, toggleDone, deleteAllDoneTasks };
+	const editTask = (updatedProperties) => {
+		if (updatedProperties.name === '') {
+			return;
+		}
+		
+		const index = items.value.findIndex(item => item.id === updatedProperties.id);
+		console.log(index);
+		const item = items.value.find(item => item.id === updatedProperties.id);
+		item.name = updatedProperties.name;
+		if (index !== -1) {
+			items.value[index] = { ...items.value[index], ...item };
+		}
+	};
+
+	return { items, addItem, deleteItem, deleteAll, toggleDone, deleteAllDoneTasks, editTask };
 });
 
