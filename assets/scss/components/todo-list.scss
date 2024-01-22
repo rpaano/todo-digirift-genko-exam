@@ -1,0 +1,15 @@
+.item-content {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+
+  .item-content-btn {
+    margin-left: auto;
+    display: flex;
+    column-gap: 10px;
+  }
+
+  :deep(.v-selection-control) {
+    flex: unset;
+  }
+}

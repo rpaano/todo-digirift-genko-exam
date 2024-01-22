@@ -1,0 +1,11 @@
+:deep(.v-toolbar__content)  {
+  gap: 2px;
+  flex-wrap: wrap;
+  padding: 10px;
+  height: auto !important;
+  justify-content: end;
+  
+  > .v-btn:last-child {
+    margin-inline-end: 0;
+  }
+}
